@@ -65,7 +65,7 @@ class Piggy(pigo.Pigo):
 
     def to_the_right(self):
         """sub routine of dance method"""
-        self.encR(6.5)
+        self.encR(7)
         self.stop()
         for x in range(3):
             self.encF(15)
