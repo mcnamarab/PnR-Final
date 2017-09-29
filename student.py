@@ -68,7 +68,7 @@ class Piggy(pigo.Pigo):
         self.encR(5)
         self.stop()
         for x in range(3):
-            self.encF(10)
+            self.encF(15)
             self.stop()
 
     def nav(self):
