@@ -81,9 +81,10 @@ class Piggy(pigo.Pigo):
             self.stop()
 
     def now_kick(self):
-        self.set_speed(500, 500)
-        self.encF(5)
-        self.encB(5)
+        for x in range(4)
+            self.set_speed(500, 500)
+            self.encF(5)
+            self.encB(5)
 
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
