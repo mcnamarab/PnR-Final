@@ -58,9 +58,9 @@ class Piggy(pigo.Pigo):
         print("\n---- LET'S DANCE ----\n")
         ##### WRITE YOUR FIRST PROJECT HERE
         self.turn_right()  # turns 90 degrees
-        self.to_the_right()  # shuffle
+        self.to_the_direction()  # shuffle
         self.turn_around()  # turns 180 degrees
-        self.to_the_right()  # shuffle
+        self.to_the_direction()  # shuffle
         self.turn_right()  # turns 90 degrees
         #self.now_kick()
         #self.cha_cha()
@@ -74,10 +74,8 @@ class Piggy(pigo.Pigo):
         self.encL(18)
         self.stop()
 
-    def to_the_right(self):
+    def to_the_direction(self):
         """sub routine of dance method"""
-        self.encR(7)
-        self.stop()
         for x in range(4):
             self.encF(13)
             self.stop()
