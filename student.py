@@ -82,7 +82,7 @@ class Piggy(pigo.Pigo):
 
     def now_kick(self):
         self.encB(5)
-        self.set_speed(300, 300)
+        self.set_speed(500, 500)
         self.encF(5)
 
     def nav(self):
