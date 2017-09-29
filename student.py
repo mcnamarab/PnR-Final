@@ -57,12 +57,22 @@ class Piggy(pigo.Pigo):
         """executes a series of methods that add up to a compound dance"""
         print("\n---- LET'S DANCE ----\n")
         ##### WRITE YOUR FIRST PROJECT HERE
-        self.to_the_right()
-        self.turn_around()
-        #self.to_the_left()
+        self.turn_right()  # turns 90 degrees
+        self.to_the_right()  # shuffle
+        self.turn_around()  # turns 180 degrees
+        self.to_the_right()  # shuffle
+        self.turn_right()  # turns 90 degrees
         #self.now_kick()
         #self.cha_cha()
         #self.walk_it_by_yourself()
+
+    def turn_right(self):
+        self.encR(7)
+        self.stop()
+
+    def turn_around(self):
+        self.encL(18)
+        self.stop()
 
     def to_the_right(self):
         """sub routine of dance method"""
@@ -72,12 +82,6 @@ class Piggy(pigo.Pigo):
             self.encF(13)
             self.stop()
 
-    def turn_around(self):
-        self.encL(18)
-        self.stop()
-
-    def to_the_left(self):
-        pass
 
 
 
