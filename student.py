@@ -58,6 +58,7 @@ class Piggy(pigo.Pigo):
         print("\n---- LET'S DANCE ----\n")
         ##### WRITE YOUR FIRST PROJECT HERE
         self.to_the_right()
+        self.turn_around()
         #self.to_the_left()
         #self.now_kick()
         #self.cha_cha()
@@ -70,6 +71,15 @@ class Piggy(pigo.Pigo):
         for x in range(4):
             self.encF(13)
             self.stop()
+
+    def turn_around(self):
+        self.encL(18)
+        self.stop()
+
+    def to_the_left(self):
+        pass
+
+
 
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
