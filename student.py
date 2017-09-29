@@ -67,8 +67,8 @@ class Piggy(pigo.Pigo):
         """sub routine of dance method"""
         self.encR(7)
         self.stop()
-        for x in range(3):
-            self.encF(15)
+        for x in range(4):
+            self.encF(18)
             self.stop()
 
     def nav(self):
