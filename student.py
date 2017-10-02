@@ -23,7 +23,7 @@ class Piggy(pigo.Pigo):
         # YOU DECIDE: What left motor power helps straighten your fwd()?
         self.LEFT_SPEED = 110
         # YOU DECIDE: What left motor power helps straighten your fwd()?
-        self.RIGHT_SPEED = 120
+        self.RIGHT_SPEED = 120quit()
         # This one isn't capitalized because it changes during runtime, the others don't
         self.turn_track = 0
         # Our scan list! The index will be the degree and it will store distance
@@ -58,13 +58,13 @@ class Piggy(pigo.Pigo):
         print("\n---- LET'S DANCE ----\n")
         ##### WRITE YOUR FIRST PROJECT HERE
         for x in range(4):
-            self.turn_right()  # turns 90 degrees
-            self.to_the_direction()  # shuffle
-            self.turn_around_left()  # turns 180 degrees
-            self.to_the_direction()  # shuffle
-            self.turn_right()  # turns 90 degrees
-            self.now_kick()
-            self.turn_left()
+           # self.turn_right()  # turns 90 degrees
+           # self.to_the_direction()  # shuffle
+           # self.turn_around_left()  # turns 180 degrees
+           # self.to_the_direction()  # shuffle
+           # self.turn_right()  # turns 90 degrees
+           # self.now_kick()
+           # self.turn_left()
 
     def turn_right(self):
         self.encR(7)
@@ -92,6 +92,13 @@ class Piggy(pigo.Pigo):
     def turn_left(self):
         self.encL(7)
         self.stop()
+
+    def carlton(self):
+        self.encR(8)
+        self.servo(45)
+        self.encL(16)
+
+
 
 
     def nav(self):
