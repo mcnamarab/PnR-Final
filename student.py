@@ -75,7 +75,7 @@ class Piggy(pigo.Pigo):
         self.encL(7)
         self.stop()
 
-    def turn_around_left(self):q
+    def turn_around_left(self):
         self.servo(135)
         self.encL(18)
         self.stop()
