@@ -95,12 +95,15 @@ class Piggy(pigo.Pigo):
         self.stop()
 
     def carlton(self):
+        self.encR(7)
+        self.servo(45)
+        self.stop()
         for x in range(5):
-            self.encR(18)
-            self.servo(45)
-            self.stop()
-            self.encL(18)
+            self.encL(12)
             self.servo(135)
+            self.stop()
+            self.encR(12)
+            self.servo(45)
             self.stop()
 
 
