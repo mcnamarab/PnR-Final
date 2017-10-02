@@ -96,7 +96,10 @@ class Piggy(pigo.Pigo):
     def carlton(self):
         self.encR(8)
         self.servo(45)
+        self.stop()
         self.encL(16)
+        self.servo(135)
+        self.stop()
 
 
 
