@@ -65,7 +65,7 @@ class Piggy(pigo.Pigo):
        # self.turn_right()  # turns 90 degrees
        # self.now_kick()
         self.turn_left()
-        self.carlton()
+       # self.carlton()
 
     def turn_right(self):
         self.encR(7)
