@@ -71,6 +71,7 @@ class Piggy(pigo.Pigo):
         self.stop()
 
     def turn_around_left(self):
+        self.servo(135)
         self.encL(18)
         self.stop()
 
@@ -81,7 +82,7 @@ class Piggy(pigo.Pigo):
             self.stop()
 
     def now_kick(self):
-        for x in range(2):
+        for x in range(3):
             self.encF(5)
             self.encB(5)
             self.encR(3)
@@ -94,12 +95,13 @@ class Piggy(pigo.Pigo):
         self.stop()
 
     def carlton(self):
-        self.encR(8)
-        self.servo(45)
-        self.stop()
-        self.encL(16)
-        self.servo(135)
-        self.stop()
+        for x in range(5):
+            self.encR(18)
+            self.servo(45)
+            self.stop()
+            self.encL(18)
+            self.servo(135)
+            self.stop()
 
 
 
