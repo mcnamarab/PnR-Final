@@ -66,8 +66,8 @@ class Piggy(pigo.Pigo):
             # self.turn_right()  # turns 90 degrees
             # self.now_kick()
             # self.turn_left()
-            # self.carlton()
             self.box()
+            self.carlton()
 
     def safety_check(self):
         self.servo(self.MIDPOINT)
