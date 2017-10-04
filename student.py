@@ -66,7 +66,8 @@ class Piggy(pigo.Pigo):
             # self.turn_right()  # turns 90 degrees
             # self.now_kick()
             # self.turn_left()
-            self.carlton()
+            # self.carlton()
+            self.box()
 
     def safety_check(self):
         self.servo(self.MIDPOINT)
@@ -119,6 +120,13 @@ class Piggy(pigo.Pigo):
             self.servo(45)
             self.stop()
 
+    def box(self):
+        for x in range(4):
+            for x in range(4):
+                self.encF(10)
+                self.encL(7)
+        self.turn_around_left()
+
 
 
 
@@ -128,7 +136,6 @@ class Piggy(pigo.Pigo):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
-
 
 ####################################################
 ############### STATIC FUNCTIONS
