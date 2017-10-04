@@ -73,7 +73,7 @@ class Piggy(pigo.Pigo):
         for x in range(4):
             if self.dist() < self.SAFE_STOP_DIST:
                 return False
-            elif:
+            else:
                 self.encR(6)
         return True
 
