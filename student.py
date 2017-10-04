@@ -76,7 +76,7 @@ class Piggy(pigo.Pigo):
                 print("Check Distance")
                 return False
             self.encR(6)
-        print("Looking good")
+        print("I will not dance")
         return True
 
 
