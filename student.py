@@ -71,10 +71,11 @@ class Piggy(pigo.Pigo):
     def safety_check(self):
         self.servo(self.MIDPOINT)
         for x in range(4):
-            if self.dist() < self.SAFE_STOP_DIST:
+            if not self.is_clear():
                 return False
-            else:
-                self.encR(6)
+            print("Check Distance")
+            self.encR(6)
+        print("safe")
         return True
 
 
