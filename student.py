@@ -124,8 +124,8 @@ class Piggy(pigo.Pigo):
         for x in range(4):
             for x in range(4):
                 self.encF(10)
-                self.encL(7)
-        self.turn_around_left()
+                self.encR(7)
+            self.turn_around_left()
 
 
 
