@@ -72,10 +72,10 @@ class Piggy(pigo.Pigo):
         self.servo(self.MIDPOINT)
         for x in range(4):
             if not self.is_clear():
+                print("Check Distance")
                 return False
-            print("Check Distance")
             self.encR(6)
-        print("safe")
+        print("Looking good")
         return True
 
 
