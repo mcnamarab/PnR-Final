@@ -97,7 +97,7 @@ class Piggy(pigo.Pigo):
         self.stop()
 
     def to_the_direction(self):
-        """sub routine of dance method"""
+        """moves robot forward 4 times"""
         for x in range(4):
             self.encF(13)
             self.stop()
