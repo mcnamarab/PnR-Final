@@ -113,10 +113,11 @@ class Piggy(pigo.Pigo):
             self.encF(3)
 
     def carlton(self):
-        self.encR(7)
+        """robots does the carlton dance"""
+        self.encR(7)  # initial right 90 deg turn
         self.servo(45)
         self.stop()
-        for x in range(5):
+        for x in range(5): # moves robot left and right along with servo on a loop
             self.encL(12)
             self.servo(135)
             self.stop()
