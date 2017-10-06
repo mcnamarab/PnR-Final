@@ -59,13 +59,13 @@ class Piggy(pigo.Pigo):
         print("\n---- LET'S DANCE ----\n")
         ##### WRITE YOUR FIRST PROJECT HERE
         if self.safety_check():
-            # self.turn_right()  # turns 90 degrees
-            # self.to_the_direction()  # shuffle
-            # self.turn_around_left()  # turns 180 degrees
-            # self.to_the_direction()  # shuffle
-            # self.turn_right()  # turns 90 degrees
-            # self.now_kick()
-            # self.turn_left()
+            self.turn_right()  # turns 90 deg to the right
+            self.to_the_direction()  # shuffle
+            self.turn_around_left()  # turns 180 deg around
+            self.to_the_direction()  # shuffle
+            self.turn_right()  # turns 90 deg right
+            self.now_kick() #
+            self.turn_left()
             self.box()
             self.carlton()
 
