@@ -80,8 +80,8 @@ class Piggy(pigo.Pigo):
         print("I will not dance")
         return True  # returns true if test passes
 
-
     def turn_right(self):
+        """turns robot 90 deg to the right"""
         self.encR(7)
         self.stop()
 
