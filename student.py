@@ -91,6 +91,7 @@ class Piggy(pigo.Pigo):
         self.stop()
 
     def turn_around_left(self):
+        """turns robot 180 deg around to the left"""
         self.servo(135)
         self.encL(18)
         self.stop()
