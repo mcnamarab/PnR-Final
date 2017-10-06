@@ -103,6 +103,7 @@ class Piggy(pigo.Pigo):
             self.stop()
 
     def now_kick(self):
+        """moves robot forward and back quickly like a kick"""
         for x in range(3):
             self.encF(5)
             self.encB(5)
