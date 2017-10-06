@@ -117,7 +117,7 @@ class Piggy(pigo.Pigo):
         self.encR(7)  # initial right 90 deg turn
         self.servo(45)
         self.stop()
-        for x in range(5): # moves robot left and right along with servo on a loop
+        for x in range(5):  # moves robot left and right along with servo on a loop
             self.encL(12)
             self.servo(135)
             self.stop()
@@ -126,7 +126,8 @@ class Piggy(pigo.Pigo):
             self.stop()
 
     def box(self):
-        for x in range(4):
+        """moves robot in a box shape"""
+        for x in range(4):  # turns right, moves forward on loop
             for x in range(4):
                 self.encF(10)
                 self.encR(7)
