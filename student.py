@@ -130,6 +130,7 @@ class Piggy(pigo.Pigo):
         for x in range(4):  # turns right, moves forward on loop
             for x in range(4):
                 self.encF(10)
+                self.servo(60)
                 self.encR(7)
             self.turn_around_left()
 
