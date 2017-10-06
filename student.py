@@ -70,14 +70,15 @@ class Piggy(pigo.Pigo):
             self.carlton()
 
     def safety_check(self):
+        """completes safety sweep, doesn't dance if not safe"""
         self.servo(self.MIDPOINT)
-        for x in range(4):
+        for x in range(4):  # completes sweep in 4 directions
             if not self.is_clear():
                 print("Check Distance")
-                return False
+                return False  # returns false if test fails
             self.encR(6)
         print("I will not dance")
-        return True
+        return True  # returns true if test passes
 
 
     def turn_right(self):
