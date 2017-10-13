@@ -144,7 +144,7 @@ class Piggy(pigo.Pigo):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         while True:
             self.cruise()
-                if self.dist() < self.SAFE_STOP_DIST:
+            if self.dist() < self.SAFE_STOP_DIST:
                     self.stop()
                     while self.dist() < self.SAFE_STOP_DIST:
                         self.right_rot()
