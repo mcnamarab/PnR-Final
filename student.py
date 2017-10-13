@@ -152,7 +152,7 @@ class Piggy(pigo.Pigo):
         """drive straight while path is clear"""
         print("I'm about to drive forward")
         self.fwd()
-        while(self.dist() > self.SAFE_STOP_DIST)
+        while(self.dist() > self.SAFE_STOP_DIST):
             time.sleep(.5)
         self.stop()
 ####################################################
