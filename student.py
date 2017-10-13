@@ -143,7 +143,7 @@ class Piggy(pigo.Pigo):
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         while True:
-            if self.is_clear()
+            if self.is_clear():
                 self.cruise()
             else:
                 self.encR(10)
