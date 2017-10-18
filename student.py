@@ -159,7 +159,19 @@ class Piggy(pigo.Pigo):
         self.stop()
 
     def obstacle_detect(self):
-        for dist in self.wide_scan(2):
+        """scans and counts number of obstacles within sight"""
+        self.wide_scan()
+        found_objects = False
+        object_counter = 0
+        for dist in self.scan:
+            if dist and dist < 200 and not found_objects:
+                found_objects = True
+                print("Object # %d found, I think" % object_counter)
+            if dist and dist > 200 and found_objects:
+                found_objects = False
+                object_counter += 1
+        print("\n----- I found %d obstacles ------\n" % object_counter)
+
 ####################################################
 ############### STATIC FUNCTIONS
 
