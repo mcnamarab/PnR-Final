@@ -41,6 +41,7 @@ class Piggy(pigo.Pigo):
         # You may change the menu if you'd like to add an experimental method
         menu = {"n": ("Navigate forward", self.nav),
                 "d": ("Dance", self.dance),
+                "o": ("Detect Obstacles", self.obstacle_detect),
                 "c": ("Calibrate", self.calibrate),
                 "s": ("Check status", self.status),
                 "q": ("Quit", quit_now),
@@ -156,6 +157,9 @@ class Piggy(pigo.Pigo):
         while(self.dist() > self.SAFE_STOP_DIST):
             time.sleep(.5)
         self.stop()
+
+    def obstacle_detect(self):
+        for dist in self.wide_scan(2):
 ####################################################
 ############### STATIC FUNCTIONS
 
