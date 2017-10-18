@@ -164,10 +164,10 @@ class Piggy(pigo.Pigo):
         found_objects = False
         object_counter = 0
         for dist in self.scan:
-            if dist and dist < 200 and not found_objects:
+            if dist and dist < 50 and not found_objects:
                 found_objects = True
                 print("Object # %d found, I think" % object_counter)
-            if dist and dist > 200 and found_objects:
+            if dist and dist > 50 and found_objects:
                 found_objects = False
                 object_counter += 1
         print("\n----- I found %d obstacles ------\n" % object_counter)
