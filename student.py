@@ -182,6 +182,7 @@ class Piggy(pigo.Pigo):
             self.stop()
             self.encL(8)
             self.stop()
+        print("I see %d total objects" % total_objects)
 
 
 
