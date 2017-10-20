@@ -171,6 +171,17 @@ class Piggy(pigo.Pigo):
             if dist and dist > 50 and found_objects:
                 found_objects = False
         print("\n----- I found %d obstacles ------\n" % object_counter)
+        return object_counter
+
+    def full_detect(self):
+        total_objects = 0
+        for x in range(4):
+            total_objects += self.wide_scan()
+            self.encR(5)
+            self.stop()
+
+
+
 
 ####################################################
 ############### STATIC FUNCTIONS
