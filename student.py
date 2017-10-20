@@ -178,7 +178,7 @@ class Piggy(pigo.Pigo):
         total_objects = 0
         for x in range(4):
             self.stop()
-            total_objects += self.wide_scan()
+            total_objects += self.obstacle_detect()
             self.stop()
             self.encL(18)
             self.stop()
