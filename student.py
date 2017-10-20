@@ -42,6 +42,7 @@ class Piggy(pigo.Pigo):
         menu = {"n": ("Navigate forward", self.nav),
                 "d": ("Dance", self.dance),
                 "o": ("Detect Obstacles", self.obstacle_detect),
+                "f": ("Detect all Obstacles", self.full_detect),
                 "c": ("Calibrate", self.calibrate),
                 "s": ("Check status", self.status),
                 "q": ("Quit", quit_now),
@@ -176,7 +177,7 @@ class Piggy(pigo.Pigo):
     def full_detect(self):
         total_objects = 0
         for x in range(4):
-            total_objects += self.wide_scan()
+            total_objects += self.wide_scan
             self.encR(5)
             self.stop()
 
