@@ -180,7 +180,7 @@ class Piggy(pigo.Pigo):
             self.stop()
             total_objects += self.obstacle_detect()
             self.stop()
-            self.encL(15)
+            self.encL(18)
             self.stop()
         print("\n----I see %d total objects----\n" % total_objects)
 
