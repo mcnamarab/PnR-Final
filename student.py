@@ -177,9 +177,10 @@ class Piggy(pigo.Pigo):
     def full_detect(self):
         total_objects = 0
         for x in range(4):
-            self.wide_scan()
             self.stop()
-            self.encR(8)
+            total_objects +=  self.wide_scan()
+            self.stop()
+            self.encL(8)
             self.stop()
 
 
