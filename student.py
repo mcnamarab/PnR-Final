@@ -180,7 +180,7 @@ class Piggy(pigo.Pigo):
             self.stop()
             self.wide_scan()
             self.stop()
-            self.encL(8)
+            self.encL(18)
             self.stop()
         print("I see %d total objects" % total_objects)
 
