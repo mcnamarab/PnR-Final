@@ -168,19 +168,19 @@ class Piggy(pigo.Pigo):
             if dist and dist < 50 and not found_objects:
                 found_objects = True
                 object_counter += 1
-                print("Object # %d found, I think" % object_counter)
+                # print("Object # %d found, I think" % object_counter)
             if dist and dist > 50 and found_objects:
                 found_objects = False
-        print("\n----- I found %d obstacles ------\n" % object_counter)
+        # print("\n----- I found %d obstacles ------\n" % object_counter)
         return object_counter
 
     def full_detect(self):
         total_objects = 0
-        for x in range(4):
+        for x in range(3):
             self.stop()
             total_objects += self.obstacle_detect()
             self.stop()
-            self.encL(18)
+            self.encL(8)
             self.stop()
         print("I see %d total objects" % total_objects)
 
