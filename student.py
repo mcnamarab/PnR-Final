@@ -148,7 +148,7 @@ class Piggy(pigo.Pigo):
                 self.cruise()
             elif self.dist() < self.SAFE_STOP_DIST:
                 self.stop()   # stops robot
-                self.encB(2)  # backs robot up to ensure proper scan
+                  # backs robot up to ensure proper scan
 
 
 
