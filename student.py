@@ -145,7 +145,7 @@ class Piggy(pigo.Pigo):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         while True:
             if self.dist() > self.SAFE_STOP_DIST:
-                self.cruise
+                self.cruise()
             elif self.dist() < self.SAFE_STOP_DIST:
                 self.stop()   # stops robot
                 self.encB(2)  # backs robot up to ensure proper scan
