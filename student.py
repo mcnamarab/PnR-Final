@@ -39,7 +39,8 @@ class Piggy(pigo.Pigo):
         """Displays menu dictionary, takes key-input and calls method"""
         ## This is a DICTIONARY, it's a list with custom index values
         # You may change the menu if you'd like to add an experimental method
-        menu = {"n": ("Navigate forward", self.nav),
+        menu = {"n": ("Navigate", self.nav),
+                "t": ("Old Turn Navigation", self.turn_nav),
                 "d": ("Dance", self.dance),
                 "o": ("Detect Obstacles", self.obstacle_detect),
                 "f": ("Detect all Obstacles", self.full_detect),
@@ -136,6 +137,19 @@ class Piggy(pigo.Pigo):
                 self.encR(7)
             self.turn_around_left()
 
+    def turn_nav(self):
+        """auto pilots and attempts to maintain original heading"""
+        logging.debug("Starting the turn_nav method")
+        print("-----------! NAVIGATION ACTIVATED !------------\n")
+        print("-------- [ Press CTRL + C to stop me ] --------\n")
+        print("-----------! NAVIGATION ACTIVATED !------------\n")
+        while True:
+            self.cruise()
+            if self.dist() < self.SAFE_STOP_DIST:
+                self.stop()
+                while self.dist() < self.SAFE_STOP_DIST:
+                    self.right_rot()
+
 
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
@@ -144,9 +158,9 @@ class Piggy(pigo.Pigo):
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         while True:
-            if self.dist() > self.SAFE_STOP_DIST:
+            if self.is_clear():
                 self.cruise()
-            elif self.dist() < self.SAFE_STOP_DIST:
+            else:
                 self.stop()  # stops robot
                 self.encB(1)
                   # backs robot up to ensure proper scan
