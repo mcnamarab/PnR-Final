@@ -137,7 +137,6 @@ class Piggy(pigo.Pigo):
             self.turn_around_left()
 
 
-
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
         logging.debug("Starting the nav method")
@@ -145,11 +144,14 @@ class Piggy(pigo.Pigo):
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         while True:
-            self.cruise()
-            if self.dist() < self.SAFE_STOP_DIST:
-                    self.stop()
-                    while self.dist() < self.SAFE_STOP_DIST:
-                        self.right_rot()
+            if self.dist() > self.SAFE_STOP_DIST:
+                self.cruise
+            elif self.dist() < self.SAFE_STOP_DIST:
+                self.stop()   # stops robot
+                self.encB(2)  # backs robot up to ensure proper scan
+
+
+
 
     def cruise(self):
         """drive straight while path is clear"""
