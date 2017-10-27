@@ -161,15 +161,14 @@ class Piggy(pigo.Pigo):
                 self.cruise()
             else:
                 self.stop()  # stops robot
-                self.encB(1)
                 self.optimal_path()
-                  # backs robot up to ensure proper scan
+              # backs robot up to ensure proper scan
 
     def optimal_path(self):
         safe_count = 0
         path_lists = []
         for x in range(self.MIDPOINT-50, self.MIDPOINT+50):
-            if self.scan[x] > self.SAFE_STOP_DIST:
+            if int(self.scan[x]) > self.SAFE_STOP_DIST:
                 safe_count += 1
             else:
                 safe_count = 0
@@ -178,6 +177,8 @@ class Piggy(pigo.Pigo):
                 safe_count = 0
                 path_lists.append(x)
         print(str(path_lists[1:10]))
+
+
     def cruise(self):
         """drive straight while path is clear"""
         print("I'm about to drive forward")
