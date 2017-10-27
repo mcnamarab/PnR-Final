@@ -137,7 +137,7 @@ class Piggy(pigo.Pigo):
                 self.encR(7)
             self.turn_around_left()
 
-    def turn_nav(self):
+    def turn_nav(self):  # old nav method
         """auto pilots and attempts to maintain original heading"""
         logging.debug("Starting the turn_nav method")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
@@ -149,7 +149,6 @@ class Piggy(pigo.Pigo):
                 self.stop()
                 while self.dist() < self.SAFE_STOP_DIST:
                     self.right_rot()
-
 
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
@@ -163,8 +162,21 @@ class Piggy(pigo.Pigo):
             else:
                 self.stop()  # stops robot
                 self.encB(1)
+                self.optimal_path()
                   # backs robot up to ensure proper scan
 
+    def optimal_path(self):
+        safe_count = 0
+        path_lists = []
+        for x in range(self.MIDPOINT-50, self.MIDPOINT+50):
+            if self.scan[x] > self.SAFE_STOP_DIST:
+                safe_count += 1
+            else:
+                safe_count= 0
+            if safe_count > 7:
+                print("Found a path at scan" + str(x))
+                safe_count = 0
+                path_lists.append(x)
 
 
 
