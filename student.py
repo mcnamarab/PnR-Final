@@ -172,14 +172,12 @@ class Piggy(pigo.Pigo):
             if self.scan[x] > self.SAFE_STOP_DIST:
                 safe_count += 1
             else:
-                safe_count= 0
+                safe_count  0
             if safe_count > 7:
                 print("Found a path at scan" + str(x))
                 safe_count = 0
                 path_lists.append(x)
-
-
-
+        print(str(path_lists[1:10]))
     def cruise(self):
         """drive straight while path is clear"""
         print("I'm about to drive forward")
