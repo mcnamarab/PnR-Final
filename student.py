@@ -172,7 +172,7 @@ class Piggy(pigo.Pigo):
             if self.scan[x] > self.SAFE_STOP_DIST:
                 safe_count += 1
             else:
-                safe_count  0
+                safe_count = 0
             if safe_count > 7:
                 print("Found a path at scan" + str(x))
                 safe_count = 0
