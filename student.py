@@ -168,7 +168,7 @@ class Piggy(pigo.Pigo):
         """find the best possible route"""
         safe_count = 0  # list to count consecutive safe paths
         path_lists = []  # number of safe paths, any grouping of 7 safe counts
-        for x in range(self.MIDPOINT-40, self.MIDPOINT+40, 4):
+        for x in range(self.MIDPOINT-40, self.MIDPOINT+40, 2):
             self.servo(x)
             time.sleep(.1)
             self.scan[x] = self.dist()
@@ -176,10 +176,10 @@ class Piggy(pigo.Pigo):
                 safe_count += 1
             else:
                 safe_count = 0
-            if safe_count > 5:
-                print("Found a path at scan" + str(x-20))
+            if safe_count > 8:
+                print("Found a path at scan" + str((x + x-16)/2))  # averages degree points to find middle path
                 safe_count = 0
-                path_lists.append(x)
+                path_lists.append((x + x-16)/2)
         print(str(path_lists[1:100]))
 
 
