@@ -176,7 +176,7 @@ class Piggy(pigo.Pigo):
                 safe_count += 1
             else:
                 safe_count = 0
-            if safe_count > 8:
+            if safe_count > 12:
                 print("Found a path at scan" + str((x + x-16)/2))  # averages degree points to find middle path
                 safe_count = 0
                 path_lists.append((x + x-16)/2)
