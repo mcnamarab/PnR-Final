@@ -177,10 +177,10 @@ class Piggy(pigo.Pigo):
             else:
                 safe_count = 0
             if safe_count > 7:
-            print("Found a path at scan" + str(x))
-            safe_count = 0
-            path_lists.append(x)
-        print(str(path_lists[1:10]))
+                print("Found a path at scan" + str(x))
+                safe_count = 0
+                path_lists.append(x)
+        print(str(path_lists[1:100]))
 
 
     def cruise(self):
