@@ -171,7 +171,7 @@ class Piggy(pigo.Pigo):
         for x in range(self.MIDPOINT-50, self.MIDPOINT+50, 4):\
             self.servo(x)
             self.scan[x] = us_dist(15)
-            if int(self.scan[x]) > self.SAFE_STOP_DIST:
+            if self.scan[x]) > self.SAFE_STOP_DIST):
                 safe_count += 1
             else:
                 safe_count = 0
