@@ -40,6 +40,7 @@ class Piggy(pigo.Pigo):
         ## This is a DICTIONARY, it's a list with custom index values
         # You may change the menu if you'd like to add an experimental method
         menu = {"n": ("Navigate", self.nav),
+                "z": ("Test optimal path", self.optimal_path),
                 "t": ("Old Turn Navigation", self.turn_nav),
                 "d": ("Dance", self.dance),
                 "o": ("Detect Obstacles", self.obstacle_detect),
@@ -162,12 +163,12 @@ class Piggy(pigo.Pigo):
             else:
                 self.stop()  # stops robot
                 self.optimal_path()
-              # backs robot up to ensure proper scan
 
     def optimal_path(self):
+        """find the best possible route"""
         safe_count = 0
         path_lists = []
-        for x in range(self.MIDPOINT-50, self.MIDPOINT+50):
+        for x in range(self.MIDPOINT-50, self.MIDPOINT+50, 4):
             if int(self.scan[x]) > self.SAFE_STOP_DIST:
                 safe_count += 1
             else:
@@ -183,7 +184,7 @@ class Piggy(pigo.Pigo):
         """drive straight while path is clear"""
         print("I'm about to drive forward")
         self.fwd()
-        while(self.dist() > self.SAFE_STOP_DIST):
+        while self.dist() > self.SAFE_STOP_DIST:
             time.sleep(.5)
         self.stop()
 
