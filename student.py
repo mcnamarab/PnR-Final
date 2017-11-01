@@ -176,8 +176,8 @@ class Piggy(pigo.Pigo):
                 safe_count += 1
             else:
                 safe_count = 0
-            if safe_count > 7:
-                print("Found a path at scan" + str(x))
+            if safe_count > 5:
+                print("Found a path at scan" + str(x-20))
                 safe_count = 0
                 path_lists.append(x)
         print(str(path_lists[1:100]))
