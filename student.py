@@ -198,8 +198,16 @@ class Piggy(pigo.Pigo):
                 safe_count = 0  # resets count
                 path_lists.append((x + x-16)/2)  # adds averaged degree path to a list
         print(path_lists)  # prints list of safe paths and their headings
+
         print((min(90-(abs(x)) for x in path_lists)))
         best_possible = (min(90-(abs(x)) for x in path_lists))
+        encoder_conversion = best_possible/10
+        encoder_conversion = int(round(best_possible))
+        if best_possible > 0:
+            self.encL(abs(encoder_conversion))
+        elif best_possible < 0:
+            self.encR(abs(encoder_conversion))
+
 
 
 
