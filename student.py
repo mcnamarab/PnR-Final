@@ -198,6 +198,9 @@ class Piggy(pigo.Pigo):
                 safe_count = 0  # resets count
                 path_lists.append((x + x-16)/2)  # adds averaged degree path to a list
         print(path_lists)  # prints list of safe paths and their headings
+        print((min(90-(abs(x)) for x in path_lists)))
+        best_possible = (min(90-(abs(x)) for x in path_lists))
+
 
 
     def cruise(self):
