@@ -41,7 +41,7 @@ class Piggy(pigo.Pigo):
         # You may change the menu if you'd like to add an experimental method
         menu = {"n": ("Navigate", self.nav),
                 "z": ("Test optimal path", self.optimal_path),
-                "r": ("Test restore heading", self.test_restore_heading()),
+                "r": ("Test restore heading", self.test_restore_heading),
                 "t": ("Old Turn Navigation", self.turn_nav),
                 "d": ("Dance", self.dance),
                 "o": ("Detect Obstacles", self.obstacle_detect),
