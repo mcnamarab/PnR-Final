@@ -42,7 +42,7 @@ class Piggy(pigo.Pigo):
         menu = {"n": ("Navigate", self.nav),
                 "z": ("Test optimal path", self.optimal_path),
                 "r": ("Test restore heading", self.test_restore_heading),
-                "t": ("Old Turn Navigation", self.turn_nav),
+                "t": ("Old Turn Navigation", self.working_turn_nav),
                 "d": ("Dance", self.dance),
                 "o": ("Detect Obstacles", self.obstacle_detect),
                 "f": ("Detect all Obstacles", self.full_detect),
@@ -139,19 +139,6 @@ class Piggy(pigo.Pigo):
                 self.encR(7)
             self.turn_around_left()
 
-    def turn_nav(self):  # old nav method
-        """auto pilots and attempts to maintain original heading"""
-        logging.debug("Starting the turn_nav method")
-        print("-----------! NAVIGATION ACTIVATED !------------\n")
-        print("-------- [ Press CTRL + C to stop me ] --------\n")
-        print("-----------! NAVIGATION ACTIVATED !------------\n")
-        while True:
-            self.cruise()
-            if self.dist() < self.SAFE_STOP_DIST:
-                self.stop()
-                while self.dist() < self.SAFE_STOP_DIST:
-                    self.right_rot()
-
     def restore_heading(self):
         """uses self.turn_track reorient to original heading"""
         print("Restoring heading!")
@@ -167,6 +154,19 @@ class Piggy(pigo.Pigo):
         self.encR(10)
         self.encL(7)
         self.restore_heading()
+
+    def working_turn_nav(self):  # old nav method
+        """auto pilots and attempts to maintain original heading by turning right if i detects and object"""
+        logging.debug("Starting the turn_nav method")
+        print("-----------! NAVIGATION ACTIVATED !------------\n")
+        print("-------- [ Press CTRL + C to stop me ] --------\n")
+        print("-----------! NAVIGATION ACTIVATED !------------\n")
+        while True:
+            self.cruise()
+            if self.dist() < self.SAFE_STOP_DIST:
+                self.stop()
+                while self.dist() < self.SAFE_STOP_DIST:
+                    self.right_rot()
 
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
