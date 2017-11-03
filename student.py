@@ -199,15 +199,18 @@ class Piggy(pigo.Pigo):
                 path_lists.append((x + x-16)/2)  # adds averaged degree path to a list
         print(path_lists)  # prints list of safe paths and their headings
 
+
+
+        ### Experimental method for turning robot to its best path ###
         print((min(90-(abs(x)) for x in path_lists)))
         best_possible = (min(90-(abs(x)) for x in path_lists))
         encoder_conversion = best_possible/10
         encoder_conversion = int(round(best_possible))
         print("\n --------- ENCODER CONVERSION IS" + (str(encoder_conversion)) + "-----------\n")
-        if best_possible > 0:
+        if best_possible < 0:
             self.encL(abs(encoder_conversion))
             print("Turning left to" + str(encoder_conversion))
-        elif best_possible < 0:
+        elif best_possible > 0:
             self.encR(abs(encoder_conversion))
             print("Turning right to" + str(encoder_conversion))
 
