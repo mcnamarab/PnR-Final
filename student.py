@@ -189,11 +189,11 @@ class Piggy(pigo.Pigo):
             self.servo(x)  # moves servo to degree
             time.sleep(.1)
             self.scan[x] = self.dist()  # adds distance at degree to scan array
-            if self.scan[x] > self.SAFE_STOP_DIST:  # checks distance at scan
+            if self.scan[x] > 70:  # checks distance at scan
                 safe_count += 1  # adds to count if certain degree is safe
             else:  # detects an object
                 safe_count = 0  # resets count since path isn't safe
-            if safe_count > 12:  # checks is it find 12 safe degrees in a row, represents a safe path
+            if safe_count > 4:  # checks is it find 12 safe degrees in a row, represents a safe path
                 print("\n -----Found a path at scan----- \n" + str((x + x-16)/2))  # averages degree points for mid
                 safe_count = 0  # resets count
                 path_lists.append((x + x-16)/2)  # adds averaged degree path to a list
