@@ -41,6 +41,7 @@ class Piggy(pigo.Pigo):
         # You may change the menu if you'd like to add an experimental method
         menu = {"n": ("Navigate", self.nav),
                 "z": ("Test optimal path", self.optimal_path),
+                "r": ("Test restore heading", self.test_restore_heading()),
                 "t": ("Old Turn Navigation", self.turn_nav),
                 "d": ("Dance", self.dance),
                 "o": ("Detect Obstacles", self.obstacle_detect),
@@ -150,6 +151,22 @@ class Piggy(pigo.Pigo):
                 self.stop()
                 while self.dist() < self.SAFE_STOP_DIST:
                     self.right_rot()
+
+    def restore_heading(self):
+        """uses self.turn_track reorient to original heading"""
+        print("Restoring heading!")
+        if self.turn_track > 0:
+            self.encL(abs(self.turn_track))
+        elif self.turn_track < 0:
+            self.encR(abs(self.turn_track))
+
+    def test_restore_heading(self):
+        self.encR(5)
+        self.encL(15)
+        self.encR(10)
+        self.encR(10)
+        self.encL(7)
+        self.restore_heading()
 
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
