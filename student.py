@@ -203,10 +203,13 @@ class Piggy(pigo.Pigo):
         best_possible = (min(90-(abs(x)) for x in path_lists))
         encoder_conversion = best_possible/10
         encoder_conversion = int(round(best_possible))
+        print("\n --------- ENCODER CONVERSION IS" + (str(encoder_conversion)) + "-----------\n")
         if best_possible > 0:
             self.encL(abs(encoder_conversion))
+            print("Turning left to" + str(encoder_conversion))
         elif best_possible < 0:
             self.encR(abs(encoder_conversion))
+            print("Turning right to" + str(encoder_conversion))
 
 
 
