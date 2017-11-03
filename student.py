@@ -185,19 +185,19 @@ class Piggy(pigo.Pigo):
         """find the best possible route"""
         safe_count = 0  # list to count consecutive safe paths
         path_lists = []  # number of safe paths, any grouping of 7 safe counts
-        for x in range(self.MIDPOINT-40, self.MIDPOINT+40, 2):
-            self.servo(x)
+        for x in range(self.MIDPOINT-40, self.MIDPOINT+40, 2):  # sets scan range
+            self.servo(x)  # moves servo to degree
             time.sleep(.1)
-            self.scan[x] = self.dist()
-            if self.scan[x] > self.SAFE_STOP_DIST:
-                safe_count += 1
-            else:
-                safe_count = 0
-            if safe_count > 12:
-                print("\n -----Found a path at scan----- \n" + str((x + x-16)/2))  # averages degree points to find middle path
-                safe_count = 0
-                path_lists.append((x + x-16)/2)
-        print(str(path_lists[1:100]))
+            self.scan[x] = self.dist()  # adds distance at degree to scan array
+            if self.scan[x] > self.SAFE_STOP_DIST:  # checks distance at scan
+                safe_count += 1  # adds to count if certain degree is safe
+            else:  # detects an object
+                safe_count = 0  # resets count since path isn't safe
+            if safe_count > 12:  # checks is it find 12 safe degrees in a row, represents a safe path
+                print("\n -----Found a path at scan----- \n" + str((x + x-16)/2))  # averages degree points for mid
+                safe_count = 0  # resets count
+                path_lists.append((x + x-16)/2)  # adds averaged degree path to a list
+        print(path_lists)  # prints list of safe paths and their headings
 
 
     def cruise(self):
