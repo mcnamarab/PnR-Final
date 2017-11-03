@@ -214,6 +214,8 @@ class Piggy(pigo.Pigo):
             self.encR(abs(encoder_conversion))
             print("Turning right to" + str(encoder_conversion))
 
+        self.cruise()
+
 
 
 
