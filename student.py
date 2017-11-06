@@ -1,6 +1,7 @@
 import pigo
 import time  # import just in case students need
 import random
+from datetime import timedelta
 
 # setup logs
 import logging
@@ -139,6 +140,8 @@ class Piggy(pigo.Pigo):
                 self.encR(7)
             self.turn_around_left()
 
+    def timeR(self):
+        self.
     def restore_heading(self):
         """uses self.turn_track reorient to original heading"""
         print("Restoring heading!")
@@ -166,8 +169,14 @@ class Piggy(pigo.Pigo):
             if self.dist() < self.SAFE_STOP_DIST:
                 self.stop()
                 self.encB(4)
+                start = time.time()
                 while self.dist() < self.SAFE_STOP_DIST:
-                    self.encR(36)
+                    self.right_rot()
+                end = time.time()
+                time_difference = start - end
+                print(time_difference)
+
+
 
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
