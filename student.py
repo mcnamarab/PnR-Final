@@ -165,8 +165,9 @@ class Piggy(pigo.Pigo):
             self.cruise()
             if self.dist() < self.SAFE_STOP_DIST:
                 self.stop()
+                self.encB(4)
                 while self.dist() < self.SAFE_STOP_DIST:
-                    self.right_rot()
+                    self.encR(36)
 
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
