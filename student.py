@@ -139,9 +139,6 @@ class Piggy(pigo.Pigo):
                 self.servo(60)
                 self.encR(7)
             self.turn_around_left()
-
-    def timeR(self):
-        self.
     def restore_heading(self):
         """uses self.turn_track reorient to original heading"""
         print("Restoring heading!")
