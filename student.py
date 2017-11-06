@@ -173,8 +173,6 @@ class Piggy(pigo.Pigo):
                 time_difference = start - end
                 print(time_difference)
 
-
-
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
         logging.debug("Starting the nav method")
