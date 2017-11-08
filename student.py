@@ -171,6 +171,7 @@ class Piggy(pigo.Pigo):
                     print('Turning to avoid obstacle')
                     start = time.time()
                     self.right_rot()
+                    time.sleep(.3)
 
                 end = time.time()
                 time_difference = start - end
