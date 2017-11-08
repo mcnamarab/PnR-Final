@@ -170,9 +170,12 @@ class Piggy(pigo.Pigo):
                     self.encR(1)
                     time.sleep(1)
 
-                self.encF(72)
-                time.sleep(1)
-                self.encL(abs(self.turn_track))
+                if self.dist() > 20:
+                    self.encF(26)
+                    time.sleep(1)
+                    self.encL(abs(self.turn_track))
+                else:
+                    print("Broke")
                 time.sleep(1)
 
 
