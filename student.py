@@ -169,6 +169,8 @@ class Piggy(pigo.Pigo):
                 while self.dist() < self.SAFE_STOP_DIST:
                     start = time.time()
                     self.right_rot()
+                    break
+
 
                 end = time.time()
                 time_difference = start - end
