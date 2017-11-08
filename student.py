@@ -176,8 +176,6 @@ class Piggy(pigo.Pigo):
                 time_difference = start - end
                 print("\n------" + time_difference + "-------\n")
 
-                self.encF(5)
-
                 second_start = time.time()
                 while time_difference > (time.time() - second_start):
                     print("Readjusting path")
