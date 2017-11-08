@@ -169,13 +169,16 @@ class Piggy(pigo.Pigo):
                 while self.dist() < self.SAFE_STOP_DIST:
                     start = time.time()
                     self.encR(1)
-                    time.sleep(1)
+                    turnpath += 1
+                    time.sleep(.3)
 
-                end = time.time()
-                time_difference = start - end
-                print("\n------" + time_difference + "-------\n")
+                self.encF(5)
+                self.encL(abs(turnpath))
 
-                # second_start = time.time()
+                # end = time.time()
+                # time_difference = start - end
+                # print("\n------" + time_difference + "-------\n")
+
                 # while time_difference > (time.time() - second_start):
                    #  print("Readjusting path")
                    # self.left_rot()
