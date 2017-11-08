@@ -170,9 +170,10 @@ class Piggy(pigo.Pigo):
                     print('Turning to avoid obstacle')
                     start = time.time()
                     self.right_rot()
+
                 end = time.time()
                 time_difference = start - end
-                print(time_difference)
+                print("\n------" + time_difference + "-------\n")
 
                 self.encF(5)
 
