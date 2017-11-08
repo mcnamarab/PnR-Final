@@ -173,14 +173,13 @@ class Piggy(pigo.Pigo):
                     self.right_rot()
                     time.sleep(.3)
 
-                end = time.time()
                 time_difference = start - end
                 print("\n------" + time_difference + "-------\n")
 
-                second_start = time.time()
-                while time_difference > (time.time() - second_start):
-                    print("Readjusting path")
-                    self.left_rot()
+                # second_start = time.time()
+                # while time_difference > (time.time() - second_start):
+                   #  print("Readjusting path")
+                   # self.left_rot()
 
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
