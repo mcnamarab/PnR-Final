@@ -166,12 +166,16 @@ class Piggy(pigo.Pigo):
             if self.dist() < self.SAFE_STOP_DIST:
                 self.stop()
                 self.encB(4)
-                start = time.time()
                 while self.dist() < self.SAFE_STOP_DIST:
+                    start = time.time()
                     self.right_rot()
                 end = time.time()
                 time_difference = start - end
                 print(time_difference)
+
+                second_start = time.time()
+                while time_difference > (time.time() - second_start):
+                    self.left_rot()
 
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
