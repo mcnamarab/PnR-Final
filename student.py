@@ -170,8 +170,10 @@ class Piggy(pigo.Pigo):
                     self.encR(1)
                     time.sleep(1)
 
-                self.encF(5)
+                self.encF(72)
+                time.sleep(.2)
                 self.encL(abs(self.turn_track))
+                time.sleep(.2)
 
 
     def nav(self):
