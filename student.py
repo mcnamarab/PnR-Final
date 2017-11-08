@@ -167,14 +167,18 @@ class Piggy(pigo.Pigo):
                 self.stop()
                 self.encB(4)
                 while self.dist() < self.SAFE_STOP_DIST:
+                    print('Turning to avoid obstacle')
                     start = time.time()
                     self.right_rot()
                 end = time.time()
                 time_difference = start - end
                 print(time_difference)
 
+                self.encF(5)
+
                 second_start = time.time()
                 while time_difference > (time.time() - second_start):
+                    print("Readjusting path")
                     self.left_rot()
 
     def nav(self):
