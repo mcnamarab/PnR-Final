@@ -168,11 +168,10 @@ class Piggy(pigo.Pigo):
                 self.stop()
                 while self.dist() < self.SAFE_STOP_DIST:
                     self.encR(1)
-                    turn_path += 1
-                    time.sleep(.3)
+                    time.sleep(1)
 
                 self.encF(5)
-                self.encL(abs(turn_path))
+                self.encL(abs(self.turn_track))
 
 
     def nav(self):
