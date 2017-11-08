@@ -166,13 +166,11 @@ class Piggy(pigo.Pigo):
             self.cruise()
             if self.dist() < self.SAFE_STOP_DIST:
                 self.stop()
-                self.encB(4)
                 while self.dist() < self.SAFE_STOP_DIST:
-                    print('Turning to avoid obstacle')
                     start = time.time()
                     self.right_rot()
-                    time.sleep(.3)
 
+                end = time.time()
                 time_difference = start - end
                 print("\n------" + time_difference + "-------\n")
 
