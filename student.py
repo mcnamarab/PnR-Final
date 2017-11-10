@@ -170,7 +170,6 @@ class Piggy(pigo.Pigo):
                 self.stop()
             time.sleep(.2)
 
-
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
         logging.debug("Starting the nav method")
@@ -196,54 +195,50 @@ class Piggy(pigo.Pigo):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         while True:
             self.cruise()
-            if self.dist() < self.SAFE_STOP_DIST:
+            if self.dist() < self.SAFE_STOP_DIST:  # detects an unsafe distance
                 self.stop()
-                while self.dist() < self.SAFE_STOP_DIST:
+                while self.dist() < self.SAFE_STOP_DIST:  # loops to turn right encR(1) until safe
                     self.encR(1)
                     time.sleep(1)
 
-                if self.dist() > 20:
+                if self.dist() > 20:  # turns back to original center based on turntrack
                     self.encF(18)
                     time.sleep(1)
                     self.encL(abs(self.turn_track))
                 else:
-                    print("Broke")
+                    print("Broke")  # error message
                 time.sleep(1)
 
     def rot_turn_nav(self):
         """auto pilots and attempts to maintain original heading by turning right if it
         detects and object, based on time values"""
-        """auto pilots and attempts to maintain original heading by turning right if it 
-               detects and object, based on enc values"""
+
         logging.debug("Starting the rot_turn_nav method")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         while True:
             self.cruise()
-            if self.dist() < self.SAFE_STOP_DIST:
+            if self.dist() < self.SAFE_STOP_DIST:  # detects an unsafe distance
                 self.stop()
-                start = datetime.datetime.utcnow()
-                while self.dist() < self.SAFE_STOP_DIST:
+                start = datetime.datetime.utcnow()  # records current time
+                while self.dist() < self.SAFE_STOP_DIST:  # turns right until it detects a safe distance
                     self.right_rot()
-                end = datetime.datetime.utcnow()
+                end = datetime.datetime.utcnow()  # records end time
                 elapsed = (end - start).microseconds  # calculates difference in time between start and end
                 print(elapsed)  # for testing
 
-
-
-
-
+                # TODO: add centering feature to method using turntrack
+                # TODO: add functionality to turn back to center based on elapsed time
 
             # self.encF(32)
 
             # while elapsed < (datetime.timedelta(seconds=elapsed)).seconds:
                 # self.left_rot()
 
-
-
     def optimal_path(self):
         """experimental: find the best possible route using a scan array"""
+
         safe_count = 0  # list to count consecutive safe paths
         path_lists = []  # number of safe paths, any grouping of 7 safe counts
         for x in range(self.MIDPOINT-40, self.MIDPOINT+40):  # sets scan range
@@ -260,7 +255,6 @@ class Piggy(pigo.Pigo):
                 path_lists.append((x + x-16)/2)  # adds averaged degree path to a list
         print(path_lists)  # prints list of safe paths and their headings
 
-
         ### Experimental method for turning robot to its best path ###
         print((min(90-(abs(x)) for x in path_lists)))
         best_possible = (min(90-(abs(x)) for x in path_lists))
@@ -275,9 +269,6 @@ class Piggy(pigo.Pigo):
             print("Turning right to" + str(encoder_conversion))
 
         self.cruise()
-
-
-
 
     def cruise(self):
         """drive straight while path is clear"""
