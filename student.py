@@ -61,6 +61,7 @@ class Piggy(pigo.Pigo):
         # activate the item selected
         menu.get(ans, [None, error])[1]()
 
+
     # YOU DECIDE: How does your GoPiggy dance?
     def dance(self):
         """executes a series of methods that add up to a compound dance"""
@@ -187,7 +188,8 @@ class Piggy(pigo.Pigo):
                 self.optimal_path()
 
     def enc_turn_nav(self):  # old nav method
-        """auto pilots and attempts to maintain original heading by turning right if i detects and object"""
+        """auto pilots and attempts to maintain original heading by turning right if it detects and object, based on enc
+        values"""
         logging.debug("Starting the turn_nav method")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("-------- [ Press CTRL + C to stop me ] --------\n")
@@ -201,7 +203,7 @@ class Piggy(pigo.Pigo):
                     time.sleep(1)
 
                 if self.dist() > 20:
-                    self.encF(26)
+                    self.encF(18)
                     time.sleep(1)
                     self.encL(abs(self.turn_track))
                 else:
@@ -209,7 +211,7 @@ class Piggy(pigo.Pigo):
                 time.sleep(1)
 
     def optimal_path(self):
-        """find the best possible route"""
+        """experimental: find the best possible route using a scan array"""
         safe_count = 0  # list to count consecutive safe paths
         path_lists = []  # number of safe paths, any grouping of 7 safe counts
         for x in range(self.MIDPOINT-40, self.MIDPOINT+40):  # sets scan range
