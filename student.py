@@ -188,9 +188,9 @@ class Piggy(pigo.Pigo):
                 self.optimal_path()
 
     def enc_turn_nav(self):  # old nav method
-        """auto pilots and attempts to maintain original heading by turning right if it detects and object, based on enc
-        values"""
-        logging.debug("Starting the turn_nav method")
+        """auto pilots and attempts to maintain original heading by turning right if it
+        detects and object, based on enc values"""
+        logging.debug("Starting the enc_turn_nav method")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
@@ -210,6 +210,34 @@ class Piggy(pigo.Pigo):
                     print("Broke")
                 time.sleep(1)
 
+    def rot_turn_nav(self):
+        """auto pilots and attempts to maintain original heading by turning right if it
+        detects and object, based on time values"""
+        """auto pilots and attempts to maintain original heading by turning right if it 
+               detects and object, based on enc values"""
+        logging.debug("Starting the rot_turn_nav method")
+        print("-----------! NAVIGATION ACTIVATED !------------\n")
+        print("-------- [ Press CTRL + C to stop me ] --------\n")
+        print("-----------! NAVIGATION ACTIVATED !------------\n")
+        while True:
+            self.cruise()
+            if self.dist() < self.SAFE_STOP_DIST:
+                self.stop()
+                start = datetime.datetime.utcnow()
+                while self.dist() < self.SAFE_STOP_DIST:
+                    self.right_rot()
+                end = datetime.datetime.utcnow()
+
+            elapsed = (end - start).seconds  # calculates difference in time between start and end
+            print(elapsed)  # for testing
+
+            # self.encF(32)
+
+            # while elapsed < (datetime.timedelta(seconds=elapsed)).seconds:
+                # self.left_rot()
+
+
+
     def optimal_path(self):
         """experimental: find the best possible route using a scan array"""
         safe_count = 0  # list to count consecutive safe paths
@@ -227,7 +255,6 @@ class Piggy(pigo.Pigo):
                 safe_count = 0  # resets count
                 path_lists.append((x + x-16)/2)  # adds averaged degree path to a list
         print(path_lists)  # prints list of safe paths and their headings
-
 
 
         ### Experimental method for turning robot to its best path ###
