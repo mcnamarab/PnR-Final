@@ -45,7 +45,7 @@ class Piggy(pigo.Pigo):
                 "p": ("Optimal path navigation", self.optimal_path),
                 "h": ("Restore heading", self.test_restore_heading),
                 "t": ("Enc Based Turn Navigation", self.enc_turn_nav),
-                "r": ("Rotate Based Turn Navigation", self.enc_turn_nav),
+                "r": ("Rotate Based Turn Navigation", self.rot_turn_nav),
                 "d": ("Dance", self.dance),
                 "o": ("Detect Obstacles", self.obstacle_detect),
                 "f": ("Detect Obstacles w/ 360", self.full_detect),
