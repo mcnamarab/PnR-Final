@@ -41,13 +41,13 @@ class Piggy(pigo.Pigo):
         ## This is a DICTIONARY, it's a list with custom index values
         # You may change the menu if you'd like to add an experimental method
         menu = {"n": ("Navigate", self.nav),
-                "z": ("Test optimal path",
-                      self.optimal_path),
-                "r": ("Test restore heading", self.test_restore_heading),
-                "t": ("Old Turn Navigation", self.working_turn_nav),
+                "p": ("Optimal path navigation", self.optimal_path),
+                "h": ("Restore heading", self.test_restore_heading),
+                "t": ("Enc Based Turn Navigation", self.enc_turn_nav),
+                "r": ("Rotate Based Turn Navigation", self.enc_turn_nav),
                 "d": ("Dance", self.dance),
                 "o": ("Detect Obstacles", self.obstacle_detect),
-                "f": ("Detect all Obstacles", self.full_detect),
+                "f": ("Detect Obstacles w/ 360", self.full_detect),
                 "c": ("Calibrate", self.calibrate),
                 "s": ("Check status", self.status),
                 "q": ("Quit", quit_now),
@@ -156,7 +156,7 @@ class Piggy(pigo.Pigo):
         self.encL(7)
         self.restore_heading()
 
-    def working_turn_nav(self):  # old nav method
+    def enc_turn_nav(self):  # old nav method
         """auto pilots and attempts to maintain original heading by turning right if i detects and object"""
         logging.debug("Starting the turn_nav method")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
