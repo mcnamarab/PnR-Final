@@ -1,7 +1,7 @@
 import pigo
 import time  # import just in case students need
+import datetime
 import random
-from datetime import timedelta
 
 # setup logs
 import logging
@@ -17,6 +17,7 @@ class Piggy(pigo.Pigo):
     def __init__(self):
         """The robot's constructor: sets variables and runs menu loop"""
         print("I have been instantiated!")
+        self.start_time = datetime.datetime.utcnow()
         # Our servo turns the sensor. What angle of the servo( ) method sets it straight?
         self.MIDPOINT = 89
         # YOU DECIDE: How close can an object get (cm) before we have to stop?
@@ -140,6 +141,7 @@ class Piggy(pigo.Pigo):
                 self.servo(60)
                 self.encR(7)
             self.turn_around_left()
+
     def restore_heading(self):
         """uses self.turn_track reorient to original heading"""
         print("Restoring heading!")
@@ -155,6 +157,22 @@ class Piggy(pigo.Pigo):
         self.encR(10)
         self.encL(7)
         self.restore_heading()
+
+    def nav(self):
+        """auto pilots and attempts to maintain original heading"""
+        logging.debug("Starting the nav method")
+        print("-----------! NAVIGATION ACTIVATED !------------\n")
+        print("-------- [ Press CTRL + C to stop me ] --------\n")
+        print("-----------! NAVIGATION ACTIVATED !------------\n")
+        right_now = datetime.datetime.utcnow()
+        difference = (right_now - self.start_time).seconds
+        print("It took you %d seconds to run this" % difference)
+        while True:
+            if self.is_clear():
+                self.cruise()
+            else:
+                self.stop()  # stops robot
+                self.optimal_path()
 
     def enc_turn_nav(self):  # old nav method
         """auto pilots and attempts to maintain original heading by turning right if i detects and object"""
@@ -177,20 +195,6 @@ class Piggy(pigo.Pigo):
                 else:
                     print("Broke")
                 time.sleep(1)
-
-
-    def nav(self):
-        """auto pilots and attempts to maintain original heading"""
-        logging.debug("Starting the nav method")
-        print("-----------! NAVIGATION ACTIVATED !------------\n")
-        print("-------- [ Press CTRL + C to stop me ] --------\n")
-        print("-----------! NAVIGATION ACTIVATED !------------\n")
-        while True:
-            if self.is_clear():
-                self.cruise()
-            else:
-                self.stop()  # stops robot
-                self.optimal_path()
 
     def optimal_path(self):
         """find the best possible route"""
