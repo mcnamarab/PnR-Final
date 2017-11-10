@@ -227,10 +227,13 @@ class Piggy(pigo.Pigo):
                 while self.dist() < self.SAFE_STOP_DIST:
                     self.right_rot()
                 end = datetime.datetime.utcnow()
+                elapsed = (end - start).microseconds  # calculates difference in time between start and end
+                print(elapsed)  # for testing
+                time.sleep(5)
 
 
-            elapsed = (end - start).microseconds  # calculates difference in time between start and end
-            print(elapsed)  # for testing
+
+
 
             # self.encF(32)
 
