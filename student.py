@@ -158,6 +158,18 @@ class Piggy(pigo.Pigo):
         self.encL(7)
         self.restore_heading()
 
+    def smooth_turn(self):
+        self.right_rot()
+        start = datetime.datetime.utcnow()
+        self.servo(self.MIDPOINT)
+        while True:
+            if self.dist() > 100:
+                self.stop()
+            elif datetime.datetime.utcnow() - start > datetime.timedelta(seconds=10):
+                self.stop()
+            time.sleep(.2)
+
+
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
         logging.debug("Starting the nav method")
