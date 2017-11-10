@@ -229,7 +229,7 @@ class Piggy(pigo.Pigo):
                 end = datetime.datetime.utcnow()
 
 
-            elapsed = (end - start).seconds  # calculates difference in time between start and end
+            elapsed = (end - start).microseconds  # calculates difference in time between start and end
             print(elapsed)  # for testing
 
             # self.encF(32)
