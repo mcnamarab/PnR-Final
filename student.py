@@ -202,7 +202,7 @@ class Piggy(pigo.Pigo):
                     time.sleep(.5)
 
                 if self.dist() > self.SAFE_STOP_DIST:  # turns back to original center based on turntrack
-                    self.encF(72)
+                    self.encF(36)
                 else:
                     print('ERROR: STOPPING NAVIGATION')
                     for x in range(3):
