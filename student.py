@@ -233,8 +233,8 @@ class Piggy(pigo.Pigo):
 
             # self.encF(32)
 
-            # while elapsed < (datetime.timedelta(seconds=elapsed)).seconds:
-                # self.left_rot()
+                while elapsed < (datetime.timedelta(seconds=elapsed)).seconds:
+                    self.left_rot()
 
     def optimal_path(self):
         """experimental: find the best possible route using a scan array"""
