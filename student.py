@@ -228,6 +228,8 @@ class Piggy(pigo.Pigo):
                 elapsed = (end - start).microseconds  # calculates difference in time between start and end
                 print(elapsed)  # for testing
 
+                self.stop()
+
                 # TODO: add centering feature to method using turntrack
                 # TODO: add functionality to turn back to center based on elapsed time
 
