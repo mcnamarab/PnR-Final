@@ -235,7 +235,7 @@ class Piggy(pigo.Pigo):
 
             # self.encF(32)
 
-                while elapsed < (datetime.timedelta(seconds=elapsed)).microseconds:
+                while(datetime.timedelta(seconds=elapsed)).microseconds:
                     self.left_rot()
 
     def optimal_path(self):
