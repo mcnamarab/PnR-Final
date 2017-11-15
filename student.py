@@ -201,12 +201,11 @@ class Piggy(pigo.Pigo):
                     self.encR(1)
                     time.sleep(1)
 
-                if self.dist() > 20:  # turns back to original center based on turntrack
-                    self.encF(18)
-                    time.sleep(1)
-                    self.encL(abs(self.turn_track))
-                else:
-                    print("Broke")  # error message
+                while self.dist() > self.SAFE_STOP_DIST:  # turns back to original center based on turntrack
+                    self.encF(100)
+
+                self.encL(abs(self.turn_track))
+
                 time.sleep(1)
 
     def rot_turn_nav(self):
@@ -235,7 +234,7 @@ class Piggy(pigo.Pigo):
 
             # self.encF(32)
 
-                while(datetime.timedelta(seconds=elapsed)).microseconds:
+                while elapsed < (datetime.timedelta(seconds=elapsed)).microseconds:
                     self.left_rot()
 
     def optimal_path(self):
