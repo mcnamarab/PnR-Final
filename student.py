@@ -179,6 +179,9 @@ class Piggy(pigo.Pigo):
             time.sleep(.5)
         self.stop()
 
+
+######## NAV METHODS #########
+
     def nav(self):
         """auto pilots using an alternating turn"""
         logging.debug("Starting the nav method")
@@ -196,12 +199,12 @@ class Piggy(pigo.Pigo):
                 self.alternate_turn()
 
     def alternate_turn(self):
-        if self.next_right:
+        if self.next_right:  # checks if self.next_right variable is true in init method
             self.encR(8)
-            self.next_right = False
+            self.next_right = False  # changes variable to false used used
         else:
             self.encL(8)
-            self.next_right = True
+            self.next_right = True  # changes variable to true when used
 
     def enc_turn_nav(self):
         """auto pilots and attempts to maintain original heading by turning right if it
@@ -285,9 +288,6 @@ class Piggy(pigo.Pigo):
             self.encL(5)
             self.stop()
         print("\n----I see %d total objects----\n" % total_objects)
-
-
-
 
 ####################################################
 ############### STATIC FUNCTIONS
