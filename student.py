@@ -208,7 +208,7 @@ class Piggy(pigo.Pigo):
                 while self.dist() > self.SAFE_STOP_DIST:  # pulls forward while safe
                     self.fwd()
 
-                self.encB(18)  # backs up
+                self.encB(9)  # backs up
                 self.stop()
                 self.encL(abs(self.turn_track))  # turns back to original heading
 
