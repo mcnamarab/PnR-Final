@@ -197,19 +197,15 @@ class Piggy(pigo.Pigo):
             self.cruise()
             if self.dist() < self.SAFE_STOP_DIST:  # detects an unsafe distance
                 self.stop()
+                self.encB(18)
                 while self.dist() < self.SAFE_STOP_DIST:  # loops to turn right encR(1) until safe
                     self.encR(1)
                     time.sleep(.5)
 
-                if self.dist() > self.SAFE_STOP_DIST:  # turns back to original center based on turntrack
-                    self.encF(36)
-                else:
-                    print('ERROR: STOPPING NAVIGATION')
-                    for x in range(3):
-                        self.stop()
-                    break
+                while self.dist() > self.SAFE_STOP_DIST:  # turns back to original center based on turntrack
+                    self.encF(72)
 
-
+                self.stop()
                 self.encL(abs(self.turn_track))
 
                 time.sleep(1)
