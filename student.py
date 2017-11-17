@@ -185,17 +185,16 @@ class Piggy(pigo.Pigo):
             if self.is_clear():
                 self.cruise()
             else:
-                self.stop()  # stops robot
-                self.optimal_path()
+                self.stop() # stops robot
+                self.alternate_turn()
 
-    # def alternate_turn(self):
-       # """method to alternate between right and left turn"""
-       # if self.next_right:
-           # self.encR(1)
-           # self.next_right = False
-       # else:
-          #  self.encL(1)
-           # self.next_right = True
+    def alternate_turn(self):
+        if self.next_right:
+            self.encR(8)
+            self.next_right = False
+        else:
+            self.encL(8)
+            self.next_right = True
 
 
     def enc_turn_nav(self):
@@ -227,6 +226,7 @@ class Piggy(pigo.Pigo):
 
                 time.sleep(1)
 
+
     def rot_turn_nav(self):
         """auto pilots and attempts to maintain original heading by turning right if it
         detects and object, based on time values"""
@@ -255,40 +255,6 @@ class Piggy(pigo.Pigo):
 
                 while elapsed < (datetime.timedelta(seconds=elapsed)).microseconds:
                     self.left_rot()
-
-    def optimal_path(self):
-        """experimental: find the best possible route using a scan array"""
-
-        safe_count = 0  # list to count consecutive safe paths
-        path_lists = []  # number of safe paths, any grouping of 7 safe counts
-        for x in range(self.MIDPOINT-40, self.MIDPOINT+40):  # sets scan range
-            self.servo(x)  # moves servo to degree
-            time.sleep(.1)
-            self.scan[x] = self.dist()  # adds distance at degree to scan array
-            if self.scan[x] > 70:  # checks distance at scan
-                safe_count += 1  # adds to count if certain degree is safe
-            else:  # detects an object
-                safe_count = 0  # resets count since path isn't safe
-            if safe_count > 5:  # checks is it find 12 safe degrees in a row, represents a safe path
-                print("\n -----Found a path at scan----- \n" + str((x + x-16)/2))  # averages degree points for mid
-                safe_count = 0  # resets count
-                path_lists.append((x + x-16)/2)  # adds averaged degree path to a list
-        print(path_lists)  # prints list of safe paths and their headings
-
-        ### Experimental method for turning robot to its best path ###
-        print((min(90-(abs(x)) for x in path_lists)))
-        best_possible = (min(90-(abs(x)) for x in path_lists))
-        encoder_conversion = best_possible/10
-        encoder_conversion = int(round(best_possible))
-        print("\n --------- ENCODER CONVERSION IS" + (str(encoder_conversion)) + "-----------\n")
-        if best_possible < 0:
-            self.encL(abs(encoder_conversion))
-            print("Turning left to" + str(encoder_conversion))
-        elif best_possible > 0:
-            self.encR(abs(encoder_conversion))
-            print("Turning right to" + str(encoder_conversion))
-
-        self.cruise()
 
     def cruise(self):
         """drive straight while path is clear"""
