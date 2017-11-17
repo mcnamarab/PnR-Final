@@ -202,11 +202,14 @@ class Piggy(pigo.Pigo):
                     self.encR(1)
                     time.sleep(.5)
 
-                while self.dist() > self.SAFE_STOP_DIST:  # turns back to original center based on turntrack
-                    self.encF(72)
+                self.encR(3)  # small turn buffer to ensure the robot turns past its side
 
+                while self.dist() > self.SAFE_STOP_DIST:  # pulls forward while safe
+                    self.fwd()
+
+                self.encB(18)  # backs up
                 self.stop()
-                self.encL(abs(self.turn_track))
+                self.encL(abs(self.turn_track))  # turns back to original heading
 
                 time.sleep(1)
 
