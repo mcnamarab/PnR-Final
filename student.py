@@ -198,11 +198,12 @@ class Piggy(pigo.Pigo):
             if self.dist() < self.SAFE_STOP_DIST:  # detects an unsafe distance
                 self.stop()
 
-                while self.dist() < self.SAFE_STOP_DIST:  # loops to turn right encR(1) until safe
+                while self.dist() < self.SAFE_STOP_DIST:  # loops to turn right by encR(1) until safe
                     self.encR(1)
                     time.sleep(.5)
 
                 self.encR(3)  # small turn buffer to ensure the robot turns past its side
+                print(self.turn_track)
 
                 while self.dist() > self.SAFE_STOP_DIST:  # pulls forward while safe
                     self.fwd()
