@@ -185,7 +185,7 @@ class Piggy(pigo.Pigo):
             if self.is_clear():
                 self.cruise()
             else:
-                self.stop() # stops robot
+                self.stop()  # stops robot
                 self.alternate_turn()
 
     def alternate_turn(self):
