@@ -188,16 +188,17 @@ class Piggy(pigo.Pigo):
                 self.stop()  # stops robot
                 self.optimal_path()
 
-    def alternate_turn(self):
-        """method to alternate between right and left turn"""
-        if self.next_right:
-            self.encR(1)
-            self.next_right = False
-        else:
-            self.encL(1)
-            self.next_right = True
+    # def alternate_turn(self):
+       # """method to alternate between right and left turn"""
+       # if self.next_right:
+           # self.encR(1)
+           # self.next_right = False
+       # else:
+          #  self.encL(1)
+           # self.next_right = True
 
-    def alternate_turn_nav(self):  # old nav method
+
+    def enc_turn_nav(self):
         """auto pilots and attempts to maintain original heading by turning right if it
         detects and object, based on enc values"""
         logging.debug("Starting the enc_turn_nav method")
@@ -210,7 +211,7 @@ class Piggy(pigo.Pigo):
                 self.stop()
 
                 while self.dist() < self.SAFE_STOP_DIST:  # loops to turn right by encR(1) until safe
-                    self.alternate_turn()
+                    self.encR(2)
                     time.sleep(.5)
 
                 self.encR(3)  # small turn buffer to ensure the robot turns past its side
@@ -218,34 +219,7 @@ class Piggy(pigo.Pigo):
 
                 while self.dist() > self.SAFE_STOP_DIST:  # pulls forward while safe
                     self.fwd()
-
-                self.encB(9)  # backs up
-                self.stop()
-                self.encL(abs(self.turn_track))  # turns back to original heading
-
-                time.sleep(1)
-
-    def enc_turn_nav(self):  # old nav method
-        """auto pilots and attempts to maintain original heading by turning right if it
-        detects and object, based on enc values"""
-        logging.debug("Starting the enc_turn_nav method")
-        print("-----------! NAVIGATION ACTIVATED !------------\n")
-        print("-------- [ Press CTRL + C to stop me ] --------\n")
-        print("-----------! NAVIGATION ACTIVATED !------------\n")
-        while True:
-            self.cruise()
-            if self.dist() < self.SAFE_STOP_DIST:  # detects an unsafe distance
-                self.stop()
-
-                while self.dist() < self.SAFE_STOP_DIST:  # loops to turn right by encR(1) until safe
-                    self.encR(1)
-                    time.sleep(.5)
-
-                self.encR(3)  # small turn buffer to ensure the robot turns past its side
-                print(self.turn_track)
-
-                while self.dist() > self.SAFE_STOP_DIST:  # pulls forward while safe
-                    self.fwd()
+                    time.sleep(.05)
 
                 self.encB(9)  # backs up
                 self.stop()
