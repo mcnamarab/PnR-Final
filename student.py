@@ -172,8 +172,16 @@ class Piggy(pigo.Pigo):
                 self.stop()
             time.sleep(.2)
 
+    def cruise(self):
+        """drive straight while path is clear"""
+        print("I'm about to drive forward")
+        self.fwd()
+        while self.dist() > self.SAFE_STOP_DIST:
+            time.sleep(.5)
+        self.stop()
+
     def nav(self):
-        """auto pilots and attempts to maintain original heading"""
+        """auto pilots using an alternating turn"""
         logging.debug("Starting the nav method")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("-------- [ Press CTRL + C to stop me ] --------\n")
@@ -195,7 +203,6 @@ class Piggy(pigo.Pigo):
         else:
             self.encL(8)
             self.next_right = True
-
 
     def enc_turn_nav(self):
         """auto pilots and attempts to maintain original heading by turning right if it
@@ -226,7 +233,6 @@ class Piggy(pigo.Pigo):
 
                 time.sleep(1)
 
-
     def rot_turn_nav(self):
         """auto pilots and attempts to maintain original heading by turning right if it
         detects and object, based on time values"""
@@ -255,14 +261,6 @@ class Piggy(pigo.Pigo):
 
                 while elapsed < (datetime.timedelta(seconds=elapsed)).microseconds:
                     self.left_rot()
-
-    def cruise(self):
-        """drive straight while path is clear"""
-        print("I'm about to drive forward")
-        self.fwd()
-        while self.dist() > self.SAFE_STOP_DIST:
-            time.sleep(.5)
-        self.stop()
 
     def obstacle_detect(self):
         """scans and counts number of obstacles within sight"""
