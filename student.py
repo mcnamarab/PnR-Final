@@ -44,7 +44,6 @@ class Piggy(pigo.Pigo):
         ## This is a DICTIONARY, it's a list with custom index values
         # You may change the menu if you'd like to add an experimental method
         menu = {"n": ("Navigate", self.nav),
-                "p": ("Optimal path navigation", self.optimal_path),
                 "h": ("Restore heading", self.test_restore_heading),
                 "t": ("Enc Based Turn Navigation", self.enc_turn_nav),
                 "r": ("Rotate Based Turn Navigation", self.rot_turn_nav),
