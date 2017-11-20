@@ -192,7 +192,7 @@ class Piggy(pigo.Pigo):
         difference = (right_now - self.start_time).seconds
         print("It took you %d seconds to run this" % difference)
         while True:
-            if self.is_clear():
+            if self.dist() > self.SAFE_STOP_DIST:
                 self.cruise()
             else:
                 self.stop()  # stops robot
