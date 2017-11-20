@@ -195,6 +195,10 @@ class Piggy(pigo.Pigo):
             if self.dist() > self.SAFE_STOP_DIST:
                 self.cruise()
             else:
+                if self.next_right:  # restores heading based on turn track from previous correction direction
+                    self.encR(abs(self.turn_track))
+                else:   # restores heading based on turn track from previous correction direction
+                    self.encL(abs(self.turn_track))
                 self.stop()  # stops robot
                 self.alternate_turn()
 
