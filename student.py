@@ -192,31 +192,28 @@ class Piggy(pigo.Pigo):
         difference = (right_now - self.start_time).seconds
         print("It took you %d seconds to run this" % difference)
         while True:
-            if self.dist() > self.SAFE_STOP_DIST:
+            if self.is_clear():
                 self.cruise()
             else:
+                self.stop()  # stops robot
+                self.alternate_turn()
                 """
                 if self.next_right:  # restores heading based on turn track from previous correction direction
                     self.encR(abs(self.turn_track))
                 else:   # restores heading based on turn track from previous correction direction
                     self.encL(abs(self.turn_track))
                 """
-
-                self.stop()  # stops robot
-                self.alternate_turn()
-
-
     def alternate_turn(self):
         if self.next_right:  # checks if self.next_right variable is true in init method
             while self.dist() < self.SAFE_STOP_DIST:
                 self.encR(8)
             self.next_right = False # changes variable to false used used
-            self.encL(abs(self.turn_track))
+
         else:
             while self.dist() < self.SAFE_STOP_DIST:
                 self.encL(8)
             self.next_right = True  # changes variable to true when used
-            self.encR(abs(self.turn_track))
+
 
     def enc_turn_nav(self):
         """auto pilots and attempts to maintain original heading by turning right if it
