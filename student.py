@@ -206,12 +206,12 @@ class Piggy(pigo.Pigo):
     def alternate_turn(self):
         if self.next_right:  # checks if self.next_right variable is true in init method
             while self.dist() < self.SAFE_STOP_DIST:
-                self.encR(8)
+                self.encR(2)
             self.next_right = False # changes variable to false used used
 
         else:
             while self.dist() < self.SAFE_STOP_DIST:
-                self.encL(8)
+                self.encL(2)
             self.next_right = True  # changes variable to true when used
 
 
