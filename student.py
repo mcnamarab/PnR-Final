@@ -192,18 +192,20 @@ class Piggy(pigo.Pigo):
         difference = (right_now - self.start_time).seconds
         print("It took you %d seconds to run this" % difference)
         while True:
-            if self.is_clear():
+            if self.dist() > self.SAFE_STOP_DIST:
                 self.cruise()
             else:
                 self.stop()  # stops robot
                 self.alternate_turn()
 
     def alternate_turn(self):
-        if self.next_right:  # checks if self.next_right variable is true in init method
-            self.encR(8)
+        if self.next_right: # checks if self.next_right variable is true in init method
+            while self.dist() < self.SAFE_STOP_DIST:
+                self.encR(8)
             self.next_right = False  # changes variable to false used used
         else:
-            self.encL(8)
+            while self.dist() < self.SAFE_STOP_DIST:
+                self.encL(8)
             self.next_right = True  # changes variable to true when used
 
     def enc_turn_nav(self):
