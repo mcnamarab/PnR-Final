@@ -196,7 +196,7 @@ class Piggy(pigo.Pigo):
                 self.cruise()
             else:
                 self.stop()  # stops robot
-                self.encB(1)
+                self.encB(3)
                 self.alternate_turn()
                 """
                 if self.next_right:  # restores heading based on turn track from previous correction direction
@@ -209,13 +209,15 @@ class Piggy(pigo.Pigo):
             while self.dist() < self.SAFE_STOP_DIST:
                 self.encR(2)
                 time.sleep(.1)
-            self.next_right = False # changes variable to false used used
+            self.next_right = False  # changes variable to false used used
+            self.encR(3)
 
         else:
             while self.dist() < self.SAFE_STOP_DIST:
                 self.encL(2)
                 time.sleep(.1)
             self.next_right = True  # changes variable to true when used
+            self.encL(3)
 
 
     def enc_turn_nav(self):
