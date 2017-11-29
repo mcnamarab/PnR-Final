@@ -210,14 +210,19 @@ class Piggy(pigo.Pigo):
                 self.encR(2)
                 time.sleep(.1)
             self.next_right = False  # changes variable to false used used
+            time.sleep(.1)
             self.encR(3)
+            time.sleep(.1)
+
 
         else:
             while self.dist() < self.SAFE_STOP_DIST:
                 self.encL(2)
                 time.sleep(.1)
             self.next_right = True  # changes variable to true when used
+            time.sleep(.1)
             self.encL(3)
+            time.sleep(.1)
 
 
     def enc_turn_nav(self):
