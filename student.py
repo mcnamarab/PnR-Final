@@ -21,7 +21,7 @@ class Piggy(pigo.Pigo):
         # Our servo turns the sensor. What angle of the servo( ) method sets it straight?
         self.MIDPOINT = 89
         # YOU DECIDE: How close can an object get (cm) before we have to stop?
-        self.SAFE_STOP_DIST = 30
+        self.SAFE_STOP_DIST = 50
         # YOU DECIDE: What left motor power helps straighten your fwd()?
         self.HARD_STOP_DIST = 15
         self.LEFT_SPEED = 130
@@ -184,7 +184,8 @@ class Piggy(pigo.Pigo):
 
     def dist_test(self):
         while True:
-            print(self.dist())
+            self.dist()
+            time.sleep(1)
 
     def nav(self):
         """auto pilots using an alternating turn"""
@@ -214,6 +215,7 @@ class Piggy(pigo.Pigo):
             while self.dist() < self.SAFE_STOP_DIST:
                 self.encR(2)
                 time.sleep(.1)
+            print("\n+\n+\n+\n+\n+\n+\n+\n+\n+")
             self.next_right = False  # changes variable to false used used
             time.sleep(.1)
             self.encR(3)
@@ -223,11 +225,11 @@ class Piggy(pigo.Pigo):
             while self.dist() < self.SAFE_STOP_DIST:
                 self.encL(2)
                 time.sleep(.1)
+            print("\n+\n+\n+\n+\n+\n+\n+\n+\n+")
             self.next_right = True  # changes variable to true when used
             time.sleep(.1)
             self.encL(3)
             time.sleep(.1)
-
 
     def enc_turn_nav(self):
         """auto pilots and attempts to maintain original heading by turning right if it
