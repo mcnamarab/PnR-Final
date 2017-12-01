@@ -193,16 +193,14 @@ class Piggy(pigo.Pigo):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
-        right_now = datetime.datetime.utcnow()
-        difference = (right_now - self.start_time).seconds
-        print("It took you %d seconds to run this" % difference)
+
         while True:
             if self.dist() > self.SAFE_STOP_DIST:
                 self.cruise()
             else:
                 self.stop()  # stops robot
-                self.encB(3)
-                self.alternate_turn()
+                self.encB(3)  # backs up to ensure safe turn
+                self.alternate_turn()  # calls the alternate turn method
                 """
                 if self.next_right:  # restores heading based on turn track from previous correction direction
                     self.encR(abs(self.turn_track))
@@ -211,26 +209,29 @@ class Piggy(pigo.Pigo):
                 """
 
     def alternate_turn(self):
+        """A method to alternate between a left and right turn until clear,  with safety"""
         if self.next_right:  # checks if self.next_right variable is true in init method
             while self.dist() < self.SAFE_STOP_DIST:
                 self.encR(2)
                 time.sleep(.1)
-                #if abs(self.turn_track) > 16:
-                    #self.encL()
+                # if abs(self.turn_track) > 16:  # add a safety too make sure the robot will stop if it is stuck
+                #   self.encL()
             print("\n+\n+\n+\n+\n+\n+\n+\n+\n+")
             self.next_right = False  # changes variable to false used used
             time.sleep(.1)
-            self.encR(3)
+            self.encR(3)  # turn buffer
             time.sleep(.1)
 
         else:
             while self.dist() < self.SAFE_STOP_DIST:
                 self.encL(2)
                 time.sleep(.1)
+                # if abs(self.turn_track) > 16:  # add a safety too make sure the robot will stop if it is stuck
+                #   self.encR()
             print("\n+\n+\n+\n+\n+\n+\n+\n+\n+")
             self.next_right = True  # changes variable to true when used
             time.sleep(.1)
-            self.encL(3)
+            self.encL(3)  # turn buffer
             time.sleep(.1)
 
     def enc_turn_nav(self):
