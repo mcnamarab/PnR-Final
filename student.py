@@ -215,6 +215,8 @@ class Piggy(pigo.Pigo):
             while self.dist() < self.SAFE_STOP_DIST:
                 self.encR(2)
                 time.sleep(.1)
+                #if abs(self.turn_track) > 16:
+                    #self.encL()
             print("\n+\n+\n+\n+\n+\n+\n+\n+\n+")
             self.next_right = False  # changes variable to false used used
             time.sleep(.1)
