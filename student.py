@@ -198,12 +198,12 @@ class Piggy(pigo.Pigo):
                 self.stop()  # stops robot
                 self.encB(3)
                 self.alternate_turn()
-                """
+
                 if self.next_right:  # restores heading based on turn track from previous correction direction
                     self.encR(abs(self.turn_track))
                 else:   # restores heading based on turn track from previous correction direction
                     self.encL(abs(self.turn_track))
-                """
+
     def alternate_turn(self):
         if self.next_right:  # checks if self.next_right variable is true in init method
             while self.dist() < self.SAFE_STOP_DIST:
@@ -273,9 +273,6 @@ class Piggy(pigo.Pigo):
                 print(elapsed)  # for testing
 
                 self.stop()
-
-                # TODO: add centering feature to method using turntrack
-                # TODO: add functionality to turn back to center based on elapsed time
 
             # self.encF(32)
 
