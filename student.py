@@ -183,6 +183,7 @@ class Piggy(pigo.Pigo):
 ######## NAV METHODS #########
 
     def dist_test(self):
+        """method to print off distances for testing"""
         while True:
             self.dist()
             time.sleep(1)
