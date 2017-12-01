@@ -47,7 +47,7 @@ class Piggy(pigo.Pigo):
                 "h": ("Restore heading", self.test_restore_heading),
                 "t": ("Enc Based Turn Navigation", self.enc_turn_nav),
                 "r": ("Rotate Based Turn Navigation", self.rot_turn_nav),
-                "d": ("Dance", self.dance),
+                "d": ("Dist", self.dist_test),
                 "o": ("Detect Obstacles", self.obstacle_detect),
                 "f": ("Detect Obstacles w/ 360", self.full_detect),
                 "c": ("Calibrate", self.calibrate),
@@ -182,6 +182,10 @@ class Piggy(pigo.Pigo):
 
 ######## NAV METHODS #########
 
+    def dist_test(self):
+        while True:
+            print(self.dist())
+
     def nav(self):
         """auto pilots using an alternating turn"""
         logging.debug("Starting the nav method")
@@ -211,18 +215,18 @@ class Piggy(pigo.Pigo):
                 self.encR(2)
                 time.sleep(.1)
             self.next_right = False  # changes variable to false used used
-            time.sleep(1)
+            time.sleep(.1)
             self.encR(3)
-            time.sleep(1)
+            time.sleep(.1)
 
         else:
             while self.dist() < self.SAFE_STOP_DIST:
                 self.encL(2)
                 time.sleep(.1)
             self.next_right = True  # changes variable to true when used
-            time.sleep(1)
+            time.sleep(.1)
             self.encL(3)
-            time.sleep(1)
+            time.sleep(.1)
 
 
     def enc_turn_nav(self):
