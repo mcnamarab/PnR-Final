@@ -225,6 +225,11 @@ class Piggy(pigo.Pigo):
             while self.dist() < self.SAFE_STOP_DIST:
                 self.encR(2)
                 time.sleep(.1)
+                if abs(self.turn_track) > 12:  # add a safety too make sure the robot will stop if it is stuck
+                    while self.dist() < self.SAFE_STOP_DIST:
+                        self.encL(2)
+                        time.sleep(.1)
+
             print("\n+\n+\n+\n+\n+\n+\n+\n+\n+")
             self.next_right = False  # changes variable to false used used
             time.sleep(.1)
@@ -235,8 +240,11 @@ class Piggy(pigo.Pigo):
             while self.dist() < self.SAFE_STOP_DIST:
                 self.encL(2)
                 time.sleep(.1)
-                # if abs(self.turn_track) > 16:  # add a safety too make sure the robot will stop if it is stuck
-                #   self.encR()
+                if abs(self.turn_track) > 12:  # add a safety too make sure the robot will stop if it is stuck
+                    while self.dist() < self.SAFE_STOP_DIST:
+                        self.encR(2)
+                        time.sleep(.1)
+
             print("\n+\n+\n+\n+\n+\n+\n+\n+\n+")
             self.next_right = True  # changes variable to true when used
             time.sleep(.1)
