@@ -21,12 +21,12 @@ class Piggy(pigo.Pigo):
         # Our servo turns the sensor. What angle of the servo( ) method sets it straight?
         self.MIDPOINT = 89
         # YOU DECIDE: How close can an object get (cm) before we have to stop?
-        self.SAFE_STOP_DIST = 20
+        self.SAFE_STOP_DIST = 30
         # YOU DECIDE: What left motor power helps straighten your fwd()?
         self.HARD_STOP_DIST = 15
-        self.LEFT_SPEED = 130
+        self.LEFT_SPEED = 100
         # YOU DECIDE: What left motor power helps straighten your fwd()?
-        self.RIGHT_SPEED = 150
+        self.RIGHT_SPEED = 120
         # This one isn't capitalized because it changes during runtime, the others don't
         self.turn_track = 0
         # Our scan list! The index will be the degree and it will store distance
@@ -45,6 +45,7 @@ class Piggy(pigo.Pigo):
         # You may change the menu if you'd like to add an experimental method
         menu = {"n": ("Navigate", self.nav),
                 "h": ("Restore heading", self.test_restore_heading),
+                "z": ("Turn safety test", self.turn_safety_test),
                 "t": ("Enc Based Turn Navigation", self.enc_turn_nav),
                 "r": ("Rotate Based Turn Navigation", self.rot_turn_nav),
                 "d": ("Dist", self.dist_test),
@@ -188,6 +189,15 @@ class Piggy(pigo.Pigo):
             self.dist()
             time.sleep(1)
 
+    def turn_safety_test(self):
+        for x in range(3):
+            self.encR(20)
+            time.sleep(5)
+            if abs(self.turn_track) > 8:  # add a safety too make sure the robot will stop if it is stuck
+                while self.dist() < self.SAFE_STOP_DIST:
+                    self.encL(2)
+                    time.sleep(.1)
+
     def nav(self):
         """auto pilots using an alternating turn"""
         logging.debug("Starting the nav method")
@@ -215,8 +225,6 @@ class Piggy(pigo.Pigo):
             while self.dist() < self.SAFE_STOP_DIST:
                 self.encR(2)
                 time.sleep(.1)
-                # if abs(self.turn_track) > 16:  # add a safety too make sure the robot will stop if it is stuck
-                #   self.encL()
             print("\n+\n+\n+\n+\n+\n+\n+\n+\n+")
             self.next_right = False  # changes variable to false used used
             time.sleep(.1)
