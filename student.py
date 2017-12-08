@@ -220,7 +220,7 @@ class Piggy(pigo.Pigo):
                 """
 
     def alternate_turn(self):
-        """A method to alternate between a left and right turn until clear,  with safety"""
+        """A method to alternate between a left and right turn until clear,  with a safety built in"""
         if self.next_right:  # checks if self.next_right variable is true in init method
             while self.dist() < self.SAFE_STOP_DIST:
                 self.encR(2)
@@ -229,8 +229,8 @@ class Piggy(pigo.Pigo):
                     while self.dist() < self.SAFE_STOP_DIST:
                         self.encL(2)
                         time.sleep(.1)
-            self.turn_track = 0
-            print("\n+\n+\n+\n+\n+\n+\n+\n+\n+")
+            self.turn_track = 0  # resets turn_track to 0
+            print("\n")
             self.next_right = False  # changes variable to false used used
             time.sleep(.1)
             self.encR(3)  # turn buffer
@@ -244,8 +244,8 @@ class Piggy(pigo.Pigo):
                     while self.dist() < self.SAFE_STOP_DIST:
                         self.encR(2)
                         time.sleep(.1)
-            self.turn_track = 0
-            print("\n+\n+\n+\n+\n+\n+\n+\n+\n+")
+            self.turn_track = 0  # resets turn_track to 0
+            print("\n")
             self.next_right = True  # changes variable to true when used
             time.sleep(.1)
             self.encL(3)  # turn buffer
